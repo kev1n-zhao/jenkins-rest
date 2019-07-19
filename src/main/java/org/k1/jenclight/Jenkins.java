@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * Light-weight Jenkins client for Java, based on Jenkins REST API
  * @author kevinzhao
  * @date 20/07/2019
  */

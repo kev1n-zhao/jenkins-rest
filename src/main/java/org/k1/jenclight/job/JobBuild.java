@@ -11,7 +11,6 @@ import org.nutz.log.Logs;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
 public class JobBuild {
@@ -49,7 +48,7 @@ public class JobBuild {
         } else {
             throw new RuntimeException(String.format("the build %s fail", buildUrl));
         }
-        return new JobResult(result);
+        return new JobResult(result, "123");
     }
 
     public JobResult await(int timeout) {

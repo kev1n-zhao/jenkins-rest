@@ -1,10 +1,12 @@
 package org.k1.jenclight.job;
 
 public class JobResult{
+    String buildUrl;
     boolean success;
 
-    public JobResult( boolean success) {
+    public JobResult(boolean success, String buildUrl) {
         this.success = success;
+        this.buildUrl=buildUrl;
     }
 
     public boolean isSuccess() {
@@ -13,5 +15,13 @@ public class JobResult{
 
     public void setSuccess(boolean success) {
         this.success = success;
+    }
+
+    public String getBuildUrl() {
+        return buildUrl;
+    }
+
+    public void setBuildUrl(String buildUrl) {
+        this.buildUrl = buildUrl;
     }
 }
