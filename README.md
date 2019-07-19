@@ -1,3 +1,5 @@
 # Jenclight
 
-Light-weight Jenkins REST client for Java
+Light-weight Jenkins client for Java, based on Jenkins REST API
+
+
