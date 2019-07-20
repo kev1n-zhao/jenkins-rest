@@ -28,6 +28,10 @@ public class Jenkins {
     private int timeout = 10000;
     Log LOG= Logs.get();
     private Jenkins(String url, String account, String creds) {
+        auth(url, account, creds);
+    }
+
+    public void auth(String url, String account, String creds) {
         this.url = url;
         this.account = account;
         Header header = Header.create();
