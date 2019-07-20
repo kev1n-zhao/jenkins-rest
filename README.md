@@ -1,6 +1,9 @@
-# Jenclight
+# Jenkins-Client
 
-Light-weight Jenkins client for Java, based on Jenkins REST API
+Light-weight Jenkins REST API Client for Java
+
+
+**no more classpath conflicts !!**
 
 -----
 
