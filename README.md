@@ -18,6 +18,6 @@ After googling for a few days I found it hard to get a jenkins rest api client f
 
 ## Quick Start
 
-the [Demo](https://github.com/logicigam/jenclight/blob/master/src/test/java/org/k1/jenclight/Demo.java) class in the source code provides most of the common use cases of how-to
+the [Demo](https://github.com/kev1nst/jenkins-client/blob/master/src/test/java/io/github/kev1nst/jenkins/Demo.java) class in the source code provides most of the common use cases of how-to
 
 
