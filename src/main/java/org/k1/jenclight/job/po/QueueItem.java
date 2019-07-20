@@ -11,11 +11,16 @@ import java.util.Map;
  */
 
 public class QueueItem extends Base{
-    private static final String LOCATION = "Location";
+    public static final String EXECUTABLE = "executable";
+    private static final String URL = "url";
+
     public QueueItem(Response response) {
         super(response);
     }
-    public String getUrl(){
-        return data.get(LOCATION);
+    public Map<String,Object> getExecutable(){
+        return (Map<String,Object>)data.get(EXECUTABLE);
+    }
+    public String getExecutableUrl(){
+        return (String)getExecutable().get(URL);
     }
 }

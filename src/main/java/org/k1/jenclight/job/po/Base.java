@@ -10,14 +10,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * base po
+ * base po for all jenkins rest api response
+ * base po for all jenkins rest api response
  * @author kevinzhao
  * @since 20/07/2019
  */
 
 public class Base {
     Log LOG= Logs.get();
-    Map<String,String> data;
+    Map<String,Object> data;
 
     public Base(Response response) {
         data=new HashMap<>();
@@ -27,9 +28,15 @@ public class Base {
         //get response text
         try {
             Map responseContent=Json.fromJson(HashMap.class,response.getContent());
-            data.putAll(responseContent);
+            if(responseContent!=null){
+                data.putAll(responseContent);
+            }
+
         } catch (Exception e) {
             LOG.debug("fail to parse the response content to json",e);
         }
+    }
+    public Map<String,Object> getData(){
+        return data;
     }
 }
