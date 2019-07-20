@@ -14,6 +14,7 @@ After googling for a few days I found it hard to get a jenkins rest api client f
 * customizable jenkins log handler
 * customizable jenkins job progress handler
 * job timeout config
+* synchronized await until job complete
 
 ## Quick Start
 
