@@ -1,6 +1,7 @@
 package org.k1.jenclight;
 
 import org.k1.jenclight.job.JobBuild;
+import org.k1.jenclight.job.po.QueueItem;
 import org.nutz.http.Header;
 import org.nutz.http.Http;
 import org.nutz.http.Request;
@@ -21,7 +22,6 @@ import java.util.Map;
 public class Jenkins {
     private static final String AUTHORIZATION = "Authorization";
     private static final String JENKINS_CRUMB = "Jenkins-Crumb";
-    private static final String LOCATION = "Location";
     private String url;
     private String account;
     private Header header;
@@ -62,8 +62,8 @@ public class Jenkins {
         if (response.getStatus() != 201) {
             throw new RuntimeException(String.format("fail to build job %s on jenkins %s \n %s", jobPath, url, descResponse(response)));
         }
-        String location = response.getHeader().get(LOCATION);
-        return new JobBuild(location, header);
+        QueueItem qi=new QueueItem(response);
+        return new JobBuild(qi, header);
     }
 
     public JobBuild build(String jobPath) {

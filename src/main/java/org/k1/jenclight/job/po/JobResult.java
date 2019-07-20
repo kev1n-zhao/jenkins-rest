@@ -1,4 +1,4 @@
-package org.k1.jenclight.job;
+package org.k1.jenclight.job.po;
 
 public class JobResult{
     String buildUrl;

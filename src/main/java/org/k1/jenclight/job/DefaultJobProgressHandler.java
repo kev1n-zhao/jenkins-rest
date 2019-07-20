@@ -1,5 +1,6 @@
 package org.k1.jenclight.job;
 
+import org.k1.jenclight.job.po.QueueItem;
 import org.nutz.log.Log;
 
 /**
@@ -20,17 +21,18 @@ public class DefaultJobProgressHandler implements JobProgressHandler {
     }
 
     @Override
-    public void start() {
+    public void start(QueueItem queueItem, int timeout) {
 
     }
 
     @Override
-    public void success() {
+    public void success(String buildUrl) {
 
     }
 
     @Override
-    public void fail() {
+    public void fail(String buildUrl) {
 
     }
+
 }

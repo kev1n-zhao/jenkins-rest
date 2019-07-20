@@ -1,5 +1,7 @@
 package org.k1.jenclight.job;
 
+import org.k1.jenclight.job.po.JobResult;
+import org.k1.jenclight.job.po.QueueItem;
 import org.nutz.http.Header;
 import org.nutz.http.Http;
 import org.nutz.http.Response;
@@ -24,19 +26,19 @@ public class JobBuild {
     private static final String TEXT_SIZE = "X-Text-Size";
     private static final String MORE_DATA = "X-More-Data";
     private static final int JOB_TIMEOUT = 1000 * 60 * 30;
-    String queueUrl;
+    QueueItem queueItem;
     Header header;
     int timeout = 10000;
 
-    public JobBuild(String queueUrl, Header header) {
-        this.queueUrl = queueUrl;
+    public JobBuild(QueueItem item, Header header) {
+        this.queueItem = item;
         this.header = header;
     }
 
     public JobResult await(int timeout, JobProgressHandler jobProgressHandler) {
         long startms=System.currentTimeMillis();
         if(jobProgressHandler!=null){
-            jobProgressHandler.start(queueUrl,timeout);
+            jobProgressHandler.start(queueItem,timeout);
         }
         String buildUrl = waitUntilExecuted(timeout,startms);
 
@@ -113,9 +115,9 @@ public class JobBuild {
 
         do {
             status = getQueueStatus();
-            LOG.info(String.format("waiting until job start executing %s",queueUrl));
+            LOG.info(String.format("waiting until job start executing %s",queueItem.getUrl()));
             sleep(2);
-            timeoutValidation(queueUrl,timeout,startms);
+            timeoutValidation(queueItem.getUrl(),timeout,startms);
         }
         while (status.get(EXECUTABLE) == null);
         return (String) ((Map) status.get(EXECUTABLE)).get("url");
@@ -125,7 +127,7 @@ public class JobBuild {
         try {
             TimeUnit.SECONDS.sleep(second);
         } catch (InterruptedException e) {
-            throw new RuntimeException(String.format("fail to get the jenkins job status %s", queueUrl), e);
+            throw new RuntimeException(String.format("fail to get the jenkins job status %s", queueItem.getUrl()), e);
         }
     }
 
@@ -133,16 +135,16 @@ public class JobBuild {
         Map jobstatus;
         Response response = Http.get(String.format("%s/" + API_JSON, buildUrl), header, timeout);
         if (response.getStatus() != 200) {
-            throw new RuntimeException(String.format("fail to get jenkins job build from %s", queueUrl));
+            throw new RuntimeException(String.format("fail to get jenkins job build from %s", queueItem.getUrl()));
         }
         jobstatus = Json.fromJson(HashMap.class, response.getContent());
         return jobstatus;
     }
 
     private Map<String, Object> getQueueStatus() {
-        Response response = Http.get(String.format("%s/" + API_JSON, queueUrl), header, timeout);
+        Response response = Http.get(String.format("%s/" + API_JSON, queueItem.getUrl()), header, timeout);
         if (response.getStatus() != 200) {
-            throw new RuntimeException(String.format("fail to get jenkins queue item from %s", queueUrl));
+            throw new RuntimeException(String.format("fail to get jenkins queue item from %s", queueItem.getUrl()));
         }
         return Json.fromJson(HashMap.class, response.getContent());
     }

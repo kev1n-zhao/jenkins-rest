@@ -2,8 +2,7 @@ package org.k1.jenclight.test;
 
 import org.junit.Test;
 import org.k1.jenclight.Jenkins;
-import org.k1.jenclight.job.JobResult;
-import org.nutz.lang.Lang;
+import org.k1.jenclight.job.po.JobResult;
 
 /**
  * @author kevinzhao
