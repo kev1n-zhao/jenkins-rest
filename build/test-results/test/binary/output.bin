@@ -1,0 +1,55 @@
+P19-07-20 18:39:47.527 INFO [Test worker] Select SystemLog as Nutz.Log implement
+R19-07-20 18:39:47.715 INFO [Test worker] successfully retrieved the jenkins crumb
+8io.github.kev1nst.jenkins.job.po.JobSubmission@2240dc4e
+u19-07-20 18:39:47.726 INFO [Test worker] waiting until job start executing http://localhost:8081/queue/item/37/ ....
+4io.github.kev1nst.jenkins.job.po.QueueItem@5faa44de
+?19-07-20 18:39:55.904 INFO [Test worker] Started by user admin
+f19-07-20 18:39:55.904 INFO [Test worker] Building in workspace /var/jenkins_home/workspace/pack1/job2
+a19-07-20 18:39:55.905 INFO [Test worker] [job2] $ /bin/sh -xe /tmp/jenkins5750030554668029052.sh
+<19-07-20 18:39:55.906 INFO [Test worker] + echo param_value
+519-07-20 18:39:55.907 INFO [Test worker] param_value
+;19-07-20 18:39:55.907 INFO [Test worker] Finished: SUCCESS
+6io.github.kev1nst.jenkins.job.po.BuildStatus@1530ca9f
+f19-07-20 18:39:56.413 INFO [Test worker] build http://localhost:8081/job/pack1/job/job2/12/ success !
+R19-07-20 18:39:56.419 INFO [Test worker] successfully retrieved the jenkins crumb
+7io.github.kev1nst.jenkins.job.po.JobSubmission@c4b3554
+u19-07-20 18:39:56.434 INFO [Test worker] waiting until job start executing http://localhost:8081/queue/item/38/ ....
+4io.github.kev1nst.jenkins.job.po.QueueItem@1f3c7270
+?19-07-20 18:40:06.110 INFO [Test worker] Started by user admin
+f19-07-20 18:40:06.110 INFO [Test worker] Building in workspace /var/jenkins_home/workspace/pack1/job1
+a19-07-20 18:40:06.111 INFO [Test worker] [job1] $ /bin/sh -xe /tmp/jenkins4432578779907827563.sh
+:19-07-20 18:40:06.111 INFO [Test worker] + echo job start
+319-07-20 18:40:06.111 INFO [Test worker] job start
+319-07-20 18:40:06.111 INFO [Test worker] + sleep 1
+a19-07-20 18:40:06.628 INFO [Test worker] [job1] $ /bin/sh -xe /tmp/jenkins6170978204565314619.sh
+>19-07-20 18:40:06.628 INFO [Test worker] + echo job executing
+719-07-20 18:40:06.628 INFO [Test worker] job executing
+319-07-20 18:40:06.629 INFO [Test worker] + sleep 1
+a19-07-20 18:40:07.651 INFO [Test worker] [job1] $ /bin/sh -xe /tmp/jenkins4878090940490650693.sh
+@19-07-20 18:40:07.651 INFO [Test worker] + echo job executing 2
+919-07-20 18:40:07.652 INFO [Test worker] job executing 2
+319-07-20 18:40:07.652 INFO [Test worker] + sleep 1
+;19-07-20 18:40:08.680 INFO [Test worker] Finished: SUCCESS
+6io.github.kev1nst.jenkins.job.po.BuildStatus@67d0024e
+f19-07-20 18:40:09.185 INFO [Test worker] build http://localhost:8081/job/pack1/job/job1/26/ success !
+R19-07-20 18:40:09.191 INFO [Test worker] successfully retrieved the jenkins crumb
+u19-07-20 18:40:09.198 INFO [Test worker] waiting until job start executing http://localhost:8081/queue/item/39/ ....
+0:Started by user admin
+?1:Building in workspace /var/jenkins_home/workspace/pack1/job2
+:2:[job2] $ /bin/sh -xe /tmp/jenkins2050865463692239929.sh
+3:+ echo param_value
+4:param_value
+5:Finished: SUCCESS
+f19-07-20 18:40:16.337 INFO [Test worker] build http://localhost:8081/job/pack1/job/job2/13/ success !
+R19-07-20 18:40:16.341 INFO [Test worker] successfully retrieved the jenkins crumb
+8io.github.kev1nst.jenkins.job.po.JobSubmission@36230996
+u19-07-20 18:40:16.353 INFO [Test worker] waiting until job start executing http://localhost:8081/queue/item/40/ ....
+4io.github.kev1nst.jenkins.job.po.QueueItem@63176b93
+?19-07-20 18:40:26.003 INFO [Test worker] Started by user admin
+f19-07-20 18:40:26.004 INFO [Test worker] Building in workspace /var/jenkins_home/workspace/pack1/job2
+a19-07-20 18:40:26.004 INFO [Test worker] [job2] $ /bin/sh -xe /tmp/jenkins4492181250324555782.sh
+<19-07-20 18:40:26.004 INFO [Test worker] + echo param_value
+519-07-20 18:40:26.004 INFO [Test worker] param_value
+;19-07-20 18:40:26.005 INFO [Test worker] Finished: SUCCESS
+6io.github.kev1nst.jenkins.job.po.BuildStatus@1fc43a73
+f19-07-20 18:40:26.506 INFO [Test worker] build http://localhost:8081/job/pack1/job/job2/14/ success !
