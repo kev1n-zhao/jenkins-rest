@@ -27,7 +27,6 @@ import static io.github.kev1nst.jenkins.common.Lang.toFullJobPath;
 public class Jenkins {
 
     private String url;
-    private String account;
     private Header header;
     private int timeout = 10000;
     Log LOG= Logs.get();
@@ -35,9 +34,15 @@ public class Jenkins {
         auth(url, account, creds);
     }
 
+    /**
+     * re-authenticate the jenkins instance if the crumb is expired
+     * @param url
+     * @param account
+     * @param creds
+     * @return
+     */
     public Jenkins auth(String url, String account, String creds) {
         this.url = url;
-        this.account = account;
         Header header = Header.create();
         String auth = new BASE64Encoder().encode(String.format("%s:%s", account, creds).getBytes());
         header.addv(Constant.AUTHORIZATION, "Basic " + auth);
@@ -56,6 +61,12 @@ public class Jenkins {
         return new Jenkins(url, account, creds);
     }
 
+    /**
+     * build jenkins job with parameter
+     * @param jobPath full job path of jenkins job
+     * @param params  job parameter map
+     * @return
+     */
     public JobBuilder build(String jobPath, Map<String, Object> params) {
         String jobUrl;
         Object paramToSend = "\"";
@@ -75,6 +86,11 @@ public class Jenkins {
         return new JobBuilder(submission, header);
     }
 
+    /**
+     * build jenkins job without parameter
+     * @param jobPath full job path of jenkins job
+     * @return
+     */
     public JobBuilder build(String jobPath) {
         return build(jobPath, null);
     }
