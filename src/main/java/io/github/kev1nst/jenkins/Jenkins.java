@@ -57,6 +57,13 @@ public class Jenkins {
         return this;
     }
 
+    /**
+     * static constructor of Jenkins class
+     * @param url
+     * @param account
+     * @param creds
+     * @return
+     */
     public static Jenkins connect(String url, String account, String creds) {
         return new Jenkins(url, account, creds);
     }
