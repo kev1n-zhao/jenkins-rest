@@ -25,6 +25,14 @@ compile group: 'io.github.kev1nst', name: 'jenkins-rest', version: '1.0.1'
 
 ```
 
+Then in your Java code, simplely add the following:
+
+```java
+
+JobResult result=Jenkins.connect(JENKINS_URL, ACCOUNT, CREDENTIAL).build("folder1/job1").await();
+// then start to write whatever code you want to execute after the job is completed
+
+```
 
 
 the [Demo](https://github.com/kev1nst/jenkins-client/blob/master/src/test/java/io/github/kev1nst/jenkins/Demo.java) class in the source code provides most of the common use cases of how-to
