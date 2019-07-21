@@ -1,9 +1,22 @@
-plugins {
-    id 'java'
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.bmuschko:gradle-nexus-plugin:2.3.1'
+    }
 }
 
-group 'org.k1'
-version '0.1-SNAPSHOT'
+
+plugins {
+    id 'java'
+    id 'maven-publish'
+    id 'io.codearte.nexus-staging' version '0.11.0'
+}
+apply plugin: 'com.bmuschko.nexus'
+
+group 'io.github.kev1nst'
+version '1.0.1'
 
 sourceCompatibility = 1.8
 
@@ -15,3 +28,46 @@ dependencies {
     compile group: 'org.nutz', name: 'nutz', version: '1.r.67'
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
+
+nexusStaging {
+
+}
+
+modifyPom {
+    project {
+        name = 'Jenkins Client'
+        description = 'Light-weight Jenkins REST API Client for Java'
+        url = 'https://github.com/kev1nst/jenkins-rest'
+        licenses {
+            license {
+                name = 'The Apache License, Version 2.0'
+                url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+            }
+        }
+        developers {
+            developer {
+                id = 'kev1nst'
+                name = 'Tianshuo Zhao'
+                email = 'zts116@gmail.com'
+            }
+        }
+        scm {
+            connection = 'scm:git:git://github.com/kev1nst/jenkins-rest.git'
+            developerConnection = 'scm:git:ssh://github.com/kev1nst/jenkins-rest.git'
+            url = 'https://github.com/kev1nst/jenkins-rest'
+        }
+    }
+}
+
+extraArchive {
+    sources = true
+    tests = true
+    javadoc = true
+}
+
+nexus {
+    sign = true
+    repositoryUrl = 'https://oss.sonatype.org/service/local/staging/deploy/maven2/'
+    snapshotRepositoryUrl = 'https://oss.sonatype.org/content/repositories/snapshots/'
+}
+

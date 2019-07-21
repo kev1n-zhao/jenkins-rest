@@ -16,7 +16,7 @@ public class DefaultJobProgressHandler implements JobProgressHandler {
 
     @Override
     public void onExecute(QueueItem item) {
-        System.out.println(item);
+
     }
 
     public DefaultJobProgressHandler(Log LOG) {
@@ -30,12 +30,12 @@ public class DefaultJobProgressHandler implements JobProgressHandler {
 
     @Override
     public void onSubmit(JobSubmission jobSubmission) {
-        System.out.println(jobSubmission);
+
     }
 
     @Override
     public void onCompleted(BuildStatus buildStatus) {
-        System.out.println(buildStatus);
+
     }
 
 }

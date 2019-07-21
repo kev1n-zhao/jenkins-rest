@@ -20,13 +20,14 @@ public interface JobProgressHandler {
 
     /**
      * trigger after job start to execute
-     * @param item
+     * @param item queueItem of jenkins job, from which you can get the executable detail
      */
     void onExecute(QueueItem item);
 
     /**
      * trigger after job complete
-     * @param status
+     * @param status the build status of jenkins job
+     *              from which you can get the complete status and other attrs
      */
     void onCompleted(BuildStatus status);
 }

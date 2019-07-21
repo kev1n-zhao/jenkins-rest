@@ -13,42 +13,35 @@ import org.nutz.lang.Lang;
  */
 
 public class Demo {
+
+    private static final String CREDENTIAL = "9aebe96f61819ce2c20c01a820719f70"; // could be password or api token
+    private static final String ACCOUNT = "admin";
+    private static final String JENKINS_URL = "http://localhost:8081";
+
     @Test
     public void simpleBuild() {
-        String jenkinsUrl = "http://localhost:8081";
-        String account = "admin";
-        String credential = "9aebe96f61819ce2c20c01a820719f70"; // could be token or password
-        Jenkins jenkins = Jenkins.connect(jenkinsUrl, account, credential);
+        Jenkins jenkins = Jenkins.connect(JENKINS_URL, ACCOUNT, CREDENTIAL);
         BuildStatus result = jenkins.build("pack1/job1").await(); // await method is synchronized call
         assert result.isSuccess();
     }
 
     @Test
     public void buildWithParameter() {
-        String jenkinsUrl = "http://localhost:8081";
-        String account = "admin";
-        String credential = "9aebe96f61819ce2c20c01a820719f70"; // could be token or password
-        Jenkins jenkins = Jenkins.connect(jenkinsUrl, account, credential);
+       Jenkins jenkins = Jenkins.connect(JENKINS_URL, ACCOUNT, CREDENTIAL);
         BuildStatus result = jenkins.build("pack1/job2", Lang.map("param1", "param_value")).await();
         assert result.isSuccess();
     }
 
     @Test
     public void buildWithTimeout() {
-        String jenkinsUrl = "http://localhost:8081";
-        String account = "admin";
-        String credential = "9aebe96f61819ce2c20c01a820719f70"; // could be token or password
-        Jenkins jenkins = Jenkins.connect(jenkinsUrl, account, credential);
+        Jenkins jenkins = Jenkins.connect(JENKINS_URL, ACCOUNT, CREDENTIAL);
         BuildStatus result = jenkins.build("pack1/job2", Lang.map("param1", "param_value")).await(100000);
         assert result.isSuccess();
     }
 
     @Test
     public void buildWithProgressHandler() {
-        String jenkinsUrl = "http://localhost:8081";
-        String account = "admin";
-        String credential = "9aebe96f61819ce2c20c01a820719f70"; // could be token or password
-        Jenkins jenkins = Jenkins.connect(jenkinsUrl, account, credential);
+        Jenkins jenkins = Jenkins.connect(JENKINS_URL, ACCOUNT, CREDENTIAL);
         BuildStatus result = jenkins.build("pack1/job2", Lang.map("param1", "param_value")).await(new JobProgressHandler() {
             @Override
 

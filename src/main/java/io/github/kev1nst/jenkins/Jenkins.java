@@ -12,8 +12,9 @@ import org.nutz.http.Response;
 import org.nutz.json.Json;
 import org.nutz.log.Log;
 import org.nutz.log.Logs;
-import sun.misc.BASE64Encoder;
 
+import java.io.UnsupportedEncodingException;
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,10 +23,11 @@ import static io.github.kev1nst.jenkins.common.Lang.toFullJobPath;
 /**
  * Light-weight Jenkins client for Java, based on Jenkins REST API
  * @author kevinzhao
- * @date 20/07/2019
+ * @since 20/07/2019
  */
 public class Jenkins {
 
+    private static final String UTF_8 = "utf-8";
     private String url;
     private Header header;
     private int timeout = 10000;
@@ -36,15 +38,21 @@ public class Jenkins {
 
     /**
      * re-authenticate the jenkins instance if the crumb is expired
-     * @param url
-     * @param account
-     * @param creds
-     * @return
+     * @param url the jenkins url
+     * @param account the jenkins account username
+     * @param creds the jenkins account password or api token
+     * @return Jenkins obj
      */
     public Jenkins auth(String url, String account, String creds) {
         this.url = url;
         Header header = Header.create();
-        String auth = new BASE64Encoder().encode(String.format("%s:%s", account, creds).getBytes());
+
+        String auth = null;
+        try {
+            auth = new String(Base64.getEncoder().encode(String.format("%s:%s", account, creds).getBytes(UTF_8)),UTF_8);
+        } catch (UnsupportedEncodingException e) {
+            throw new JenkinsException(e);
+        }
         header.addv(Constant.AUTHORIZATION, "Basic " + auth);
         Response res = Http.get(String.format(Constant.ISSUER_API_JSON, url), header, timeout);
         if (!res.isOK()) {
@@ -59,10 +67,10 @@ public class Jenkins {
 
     /**
      * static constructor of Jenkins class
-     * @param url
-     * @param account
-     * @param creds
-     * @return
+     * @param url the jenkins url
+     * @param account the jenkins account username
+     * @param creds the jenkins account password or api token
+     * @return the jenkins obj
      */
     public static Jenkins connect(String url, String account, String creds) {
         return new Jenkins(url, account, creds);
@@ -71,8 +79,8 @@ public class Jenkins {
     /**
      * build jenkins job with parameter
      * @param jobPath full job path of jenkins job
-     * @param params  job parameter map
-     * @return
+     * @param params  job parameter map, the key/value pair in this map should match the jenkins parameter key/value pair
+     * @return the jenkins obj
      */
     public JobBuilder build(String jobPath, Map<String, Object> params) {
         String jobUrl;
@@ -96,7 +104,7 @@ public class Jenkins {
     /**
      * build jenkins job without parameter
      * @param jobPath full job path of jenkins job
-     * @return
+     * @return the job builder obj, it allows synchronized job result waiting through await method
      */
     public JobBuilder build(String jobPath) {
         return build(jobPath, null);

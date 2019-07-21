@@ -48,17 +48,24 @@ public class JobBuilder {
 
     /**
      * @param timeout in ms
-     * @return
+     * @return the build status obj
      */
     public BuildStatus await(int timeout) {
         JobProgressHandler jobProgressHandler = new DefaultJobProgressHandler(LOG);
         return await(timeout, jobProgressHandler);
     }
-
+    /**
+     * @return the build status obj
+     */
     public BuildStatus await() {
         return await(JOB_TIMEOUT);
     }
 
+    /**
+     *
+     * @param jobProgressHandler define job event handler including job log
+     * @return the build status obj
+     */
     public BuildStatus await(JobProgressHandler jobProgressHandler) {
         return await(JOB_TIMEOUT, jobProgressHandler);
     }
