@@ -35,7 +35,7 @@ nexusStaging {
 
 modifyPom {
     project {
-        name = 'Jenkins Client'
+        name = 'Jenkins REST Client'
         description = 'Light-weight Jenkins REST API Client for Java'
         url = 'https://github.com/kev1nst/jenkins-rest'
         licenses {
