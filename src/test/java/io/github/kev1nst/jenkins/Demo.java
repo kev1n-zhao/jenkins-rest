@@ -35,7 +35,7 @@ public class Demo {
     @Test
     public void buildWithTimeout() {
         Jenkins jenkins = Jenkins.connect(JENKINS_URL, ACCOUNT, CREDENTIAL);
-        BuildStatus result = jenkins.build("pack1/job2", Lang.map("param1", "param_value")).await(100000);
+        BuildStatus result = jenkins.build("pack1/job2", Lang.map("param1", "param_value")).await(100000); // timeout in ms
         assert result.isSuccess();
     }
 
