@@ -14,7 +14,7 @@ import org.nutz.lang.Lang;
 
 public class Demo {
 
-    private static final String CREDENTIAL = "9aebe96f61819ce2c20c01a820719f70"; // could be password or api token
+    private static final String CREDENTIAL = "9aebe96f61819ce2c20c01a820719f70"; // could be password or api token, this one is just a dummy cfredential, don't panic...
     private static final String ACCOUNT = "admin";
     private static final String JENKINS_URL = "http://localhost:8081";
 
