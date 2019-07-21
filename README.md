@@ -7,13 +7,13 @@ Light-weight Jenkins REST API Client for Java
 
 -----
 
-After googling for a few days I found it hard to get a jenkins rest api client for java without a dozen of dependencies, the offical client com.offbytwo.jenkins caused me lots of classpath conflicts with aws sdk, kafka java sdk etc. Most of them are around common utility lib like jackson. To fix these classpath conflicts, Instead of rewriting another aws sdk or kafka sdk which to me is too much to complete, jenkins seems to be the easy answer. After just 1 day coding, I managed to create this light weight jenkins rest api client ---jenclight. Currently it supports: 
+After googling for a few days I found it hard to get a jenkins rest api client for java without a dozen of dependencies, the offical client com.offbytwo.jenkins caused me lots of classpath conflicts with aws sdk, kafka java sdk etc. Most of them are around common utility libs like jackson. To fix these classpath conflicts, Instead of rewriting another aws sdk or kafka sdk which is obviously too much to complete, jenkins seems to be the easy answer.  Here comes this light weight jenkins rest api client,  currently it supports: 
 
 * basic http authentication with account username, password/api-token
 * build job with or without parameters
-* customizable jenkins log handler
-* customizable jenkins job progress handler
-* job timeout config
+* customizable jenkins log handler ( register callback method which will trigger when log entry is retrieved )
+* customizable jenkins job progress handler ( register callback method which will trigger when certain job lifecycle event is reached )
+* job timeout config (throw exception after timeout)
 * synchronized await until job complete
 
 ## Quick Start
