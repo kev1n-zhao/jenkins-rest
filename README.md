@@ -18,7 +18,14 @@ After googling for a few days I found it hard to get a jenkins rest api client f
 
 ## Quick Start
 
-Currently this client hasn't been published to central maven repository yet, since it's pretty light weight, will be much easier to build locally, simply fire: ./gradlew clean build in the root project, you should be able to get the artifact with a few minutes.
+update your build.gradle, add the following dependency:
+```gradle
+
+compile group: 'io.github.kev1nst', name: 'jenkins-rest', version: '1.0.1'
+
+```
+
+
 
 the [Demo](https://github.com/kev1nst/jenkins-client/blob/master/src/test/java/io/github/kev1nst/jenkins/Demo.java) class in the source code provides most of the common use cases of how-to
 
