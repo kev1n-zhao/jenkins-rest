@@ -1,11 +1,13 @@
 package io.github.kev1nst.jenkins;
 
+import io.github.kev1nst.jenkins.common.Log4j2Adapter;
 import io.github.kev1nst.jenkins.job.handler.JobProgressHandler;
 import io.github.kev1nst.jenkins.job.po.JobSubmission;
 import io.github.kev1nst.jenkins.job.po.QueueItem;
 import org.junit.Test;
 import io.github.kev1nst.jenkins.job.po.BuildStatus;
 import org.nutz.lang.Lang;
+import org.nutz.log.Logs;
 
 /**
  * @author kevinzhao
@@ -13,7 +15,10 @@ import org.nutz.lang.Lang;
  */
 
 public class Demo {
-
+    static {
+        System.setProperty("log4j.configurationFile", "log4j2.xml");
+        Logs.setAdapter(new Log4j2Adapter());
+    }
     private static final String CREDENTIAL = "9aebe96f61819ce2c20c01a820719f70"; // could be password or api token, this one is just a dummy cfredential, don't panic...
     private static final String ACCOUNT = "admin";
     private static final String JENKINS_URL = "http://localhost:8081";

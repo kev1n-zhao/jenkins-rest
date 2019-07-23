@@ -5,22 +5,24 @@ import io.github.kev1nst.jenkins.job.po.JobSubmission;
 import io.github.kev1nst.jenkins.job.po.BuildStatus;
 import io.github.kev1nst.jenkins.job.po.QueueItem;
 import org.nutz.log.Log;
+import org.nutz.log.Logs;
 
 /**
+ * the default job progress adapter to extend with
  * @author kevinzhao
  * @since 20/07/2019
  */
 
 public class DefaultJobProgressHandler implements JobProgressHandler {
-    Log LOG;
+    Log LOG= Logs.get();
 
     @Override
     public void onExecute(QueueItem item) {
 
     }
 
-    public DefaultJobProgressHandler(Log LOG) {
-        this.LOG = LOG;
+    public DefaultJobProgressHandler() {
+
     }
 
     @Override

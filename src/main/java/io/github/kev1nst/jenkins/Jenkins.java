@@ -26,12 +26,13 @@ import static io.github.kev1nst.jenkins.common.Lang.toFullJobPath;
  * @since 20/07/2019
  */
 public class Jenkins {
+    static Log LOG = Logs.get();
 
     private static final String UTF_8 = "utf-8";
     private String url;
     private Header header;
     private int timeout = 10000;
-    Log LOG= Logs.get();
+
     private Jenkins(String url, String account, String creds) {
         auth(url, account, creds);
     }

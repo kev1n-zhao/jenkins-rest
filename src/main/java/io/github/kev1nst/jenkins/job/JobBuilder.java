@@ -51,7 +51,7 @@ public class JobBuilder {
      * @return the build status obj
      */
     public BuildStatus await(int timeout) {
-        JobProgressHandler jobProgressHandler = new DefaultJobProgressHandler(LOG);
+        JobProgressHandler jobProgressHandler = new DefaultJobProgressHandler();
         return await(timeout, jobProgressHandler);
     }
     /**
