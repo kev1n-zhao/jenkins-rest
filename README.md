@@ -1,4 +1,4 @@
-# Jenkins-Client
+# Jenkins-REST
 
 Light-weight Jenkins REST API Client for Java
 
